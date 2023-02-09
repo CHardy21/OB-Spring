@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 1 - Escribo los Beans -->
+<!--
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="	http://www.springframework.org/schema/beans
+       						http://www.springframework.org/schema/beans/spring-beans.xsd" >
+ -->
 
-    <bean id="calculadora" class="com.example.Calculadora" >
-    </bean>
-    
+<!-- Version 2. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        				
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="	http://www.springframework.org/schema/beans 
+       						http://www.springframework.org/schema/beans/spring-beans.xsd 
+       						
+       						http://www.springframework.org/schema/context 
+       						https://www.springframework.org/schema/context/spring-context.xsd" >
+
+
+    <!-- Version 1. Ejercicio 1 -->
+    <!--
+    <bean id="calculadora" class="com.example.Calculadora" />
     <bean id="saludo" class="com.example.Saludo" />
-
-<!--
-    <bean id="gestorFacturas" class="com.example.GestorFacturas">
-        <constructor-arg name="calculadora" ref="calculadora" />
-        <constructor-arg name="nombre" value="Facturator 3000" />
-
+	-->
+	<!-- Ejercicio 2 
+	<bean id="notificationService" class="com.example.NotificationService" />
+    <bean id="userService" class="com.example.UserService">
+        <constructor-arg name="notificationService" ref="notificationService" />
     </bean>
--->
-
-
+    -->
+    
+    <!-- Version 2. -->
+    <!-- la siguiente linea scanea todos los beans que estan en el paquete base.
+    	 No hace falta escribir los beans manualmente como los de arriba (Version 1)
+    	 Hay q usar la notacion @Component en esas clases.
+      -->
+    <context:component-scan base-package="com.example" />
+    
 </beans>

@@ -1,5 +1,7 @@
 # OB-Spring
 
+Repo de OpenBootcamp: https://github.com/Open-Bootcamp/spring
+
 
 
 ## Getting started
