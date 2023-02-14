@@ -3,6 +3,8 @@ package com.example.restcontroller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,18 +18,22 @@ import com.example.repository.BookRepository;
 @RestController
 public class BookController {
 	
-	private BookRepository bookRepository;
+	private final Logger log = LoggerFactory.getLogger(BookController.class);
 	
-	public BookController(BookRepository bookRepository) {
+	private BookRepository bookRepository;
+		public BookController(BookRepository bookRepository) {
 		super();
 		this.bookRepository = bookRepository;
 	}
 
+	
+	// Listar todos los books
 	@GetMapping("/api/books")
 	public List<Book> findAll(){
 		return bookRepository.findAll();
 	}
 	
+	// mostrar un book por su id
 	@GetMapping("/api/books/{id}")
 	public ResponseEntity<Book> findById(@PathVariable Long id){
 		Optional<Book> bookOpt = bookRepository.findById(id);
@@ -40,9 +46,22 @@ public class BookController {
 		// return bookOpt.orElse(null);
 	}
 	
+	// persistir un book
 	@PostMapping("/api/books")
-	public Book create(@RequestBody Book book) {
-		return bookRepository.save(book);
+	public ResponseEntity<Book> create(@RequestBody Book book) {
+		// verifico si me estan pasando un id
+		if(book.getId() != null) {
+			log.warn("log: trying to create book with id");
+			System.out.println("trying to create book with id");
+			
+			return ResponseEntity.badRequest().build();
+		} else {
+			Book response = bookRepository.save(book);
+		return ResponseEntity.ok(response);
+		}
 	}
+	
+	// actualizar info de un book
+	
 	
 }
