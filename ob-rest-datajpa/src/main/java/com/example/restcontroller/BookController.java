@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entities.Book;
 import com.example.repository.BookRepository;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
+
 @RestController
 public class BookController {
 	
@@ -37,7 +41,8 @@ public class BookController {
 	
 	// mostrar un book por su id
 	@GetMapping("/api/books/{id}")
-	public ResponseEntity<Book> findById(@PathVariable Long id){
+	@ApiOperation("Buscar un libro por clave primaria id Long")  // Agrega comentarios en Swagger
+	public ResponseEntity<Book> findById(@ApiParam("Clave primaria tipo Long") @PathVariable Long id){
 		Optional<Book> bookOpt = bookRepository.findById(id);
 		
 		if(bookOpt.isPresent()) {
@@ -103,6 +108,8 @@ public class BookController {
 	
 	// borrar todos los books
 	@DeleteMapping("/api/books")
+	@ApiIgnore		// Anotacion para ignorar este metedo en swagger
+	
 	public ResponseEntity<Book> deleteAll(){
 		log.info("REST Request for DELETE All books");
 		bookRepository.deleteAll();

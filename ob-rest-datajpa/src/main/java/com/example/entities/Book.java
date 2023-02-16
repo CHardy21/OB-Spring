@@ -7,8 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
+@ApiModel("Entidad Libros")
 public class Book {
 
 	// atributos
@@ -18,6 +22,7 @@ public class Book {
     private String title;
     private String author;
     private Integer pages;
+    @ApiModelProperty("Precio en Pesos Arg con dos decimales")
     private Double price;
     private LocalDate releaseDate;
     private Boolean online;
