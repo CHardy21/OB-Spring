@@ -5,3 +5,4 @@ insert into cars (fabricante, model,cc,doors,available,year,release_date) VALUES
 insert into cars (fabricante, model,cc,doors,available,year,release_date) VALUES ('Coche3', 'Coche3', 2.1, 5, true, 1999, '2020-12-30');
 insert into cars (fabricante, model,cc,doors,available,year,release_date) VALUES ('Coche4', 'Coche4', 2.1, 5, true, 1999, '2020-12-30');
 insert into app_users(username, email, password) values ('alan', 'alan@alan', '$2a$10$qINz45KQzkLHtzOovvgjn.y1SKh8zfR5Meyh61FHz3bvSlO4uez.O');
+insert into app_users(username, email, password) values ("CHardy","christianrh2000@hotmail.com","$2a$10$435U4SRQN2eWWFDkiSrIaOb4u.uLC2N2ZBxDz3vZu871sFYxZpX6m");
